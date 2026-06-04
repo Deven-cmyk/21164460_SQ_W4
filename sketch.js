@@ -1,6 +1,5 @@
 function preload() {
-  // soundFormats('mp3');
-  // bgMusic = loadSound('assets/sounds/backgroundmusicforclass.mp3');
+  // Sound is temporarily disabled to get the game running!
 }
 
 function setup() {
@@ -60,17 +59,6 @@ function draw() {
 }
 
 function mousePressed() {
-  // if (bgMusic && !bgMusic.isPlaying()) {
-  //  bgMusic.loop();
-  // }
-
-  switch(currentScene) {
-    case 1: clickScene1(); break;
-    case 2: clickScene2(); break;
-    // ... rest of your switch statement
-  }
-}
-
   switch (currentScene) {
     case 1:
       clickScene1();
@@ -93,5 +81,6 @@ function mousePressed() {
     case 7:
       clickScene7();
       break;
+    // Endings 8-15 do not have clickable buttons, so they are not here
   }
 }
