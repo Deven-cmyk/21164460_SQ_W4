@@ -1,9 +1,5 @@
 function drawScene11() {
-  push();
-  background(40);
-  fill(80, 90, 100);
-  rect(300, 300, 200, 300); // Straight cliff
-  pop();
+  drawMountain();
 
   drawDiogenes(400, 250, "metalBarrel");
 

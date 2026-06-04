@@ -1,8 +1,5 @@
 function drawScene7() {
-  push();
-  fill(90, 100, 110);
-  triangle(0, 600, 400, 300, 800, 600); // Rock ledge
-  pop();
+  drawMountain();
 
   drawDiogenes(400, 350, "bowl");
 

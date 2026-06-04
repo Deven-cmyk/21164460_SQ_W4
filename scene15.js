@@ -1,9 +1,5 @@
 function drawScene15() {
-  push();
-  background(80, 150, 80); // Pleasant green forest
-  fill(60, 120, 60);
-  triangle(100, 600, 700, 600, 400, 200); // Green hill
-  pop();
+  drawMountain();
 
   drawDiogenes(400, 300, "none"); // Just walking
 

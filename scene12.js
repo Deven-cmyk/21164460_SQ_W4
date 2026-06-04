@@ -1,9 +1,5 @@
 function drawScene12() {
-  push();
-  background(40);
-  fill(80, 90, 100);
-  triangle(100, 600, 700, 600, 400, 200);
-  pop();
+  drawMountain();
 
   drawDiogenes(400, 500, "woodBarrel");
 

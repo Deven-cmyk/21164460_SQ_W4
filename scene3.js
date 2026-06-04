@@ -1,8 +1,5 @@
 function drawScene3() {
-  push();
-  fill(100, 150, 100); // Green grass
-  rect(0, 400, 800, 200);
-  pop();
+  drawMountain();
 
   // Diogenes still has his legs here since he hasn't picked a vessel yet
   drawDiogenes(400, 380, "none");

@@ -1,9 +1,5 @@
 function drawScene10() {
-  push();
-  background(40);
-  fill(80, 90, 100);
-  triangle(200, 600, 800, 600, 500, 300);
-  pop();
+  drawMountain();
 
   drawDiogenes(500, 280, "metalBarrel");
 

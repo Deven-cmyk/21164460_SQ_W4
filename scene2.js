@@ -1,11 +1,5 @@
 function drawScene2() {
-  push();
-  fill(80, 50, 40);
-  rect(0, 400, 800, 200);
-  fill(120, 120, 120);
-  rect(200, 350, 100, 100);
-  rect(500, 380, 150, 70);
-  pop();
+  drawMountain();
 
   push();
   fill(255);

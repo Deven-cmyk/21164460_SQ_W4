@@ -1,14 +1,31 @@
 function preload() {
-  // Sound is temporarily disabled to get the game running!
+  soundFormats("mp3");
+  bgMusic = loadSound("assets/sounds/backgroundmusicforclass.mp3");
 }
 
 function setup() {
   createCanvas(800, 600);
+  textFont("sans-serif");
 }
 
 function draw() {
-  background(40, 50, 60);
+  // 1. Draw a beautiful gradient sky
+  let topColor = color(20, 30, 60);
+  let bottomColor = color(100, 120, 160);
+  for (let i = 0; i <= height; i++) {
+    let inter = map(i, 0, height, 0, 1);
+    let c = lerpColor(topColor, bottomColor, inter);
+    stroke(c);
+    line(0, i, width, i);
+  }
 
+  // 2. Animated floating clouds in the background
+  fill(255, 255, 255, 40);
+  noStroke();
+  ellipse(((frameCount * 0.5) % (width + 200)) - 100, 150, 150, 50);
+  ellipse(((frameCount * 0.3 + 300) % (width + 200)) - 100, 250, 200, 60);
+
+  // 3. Render the active scene
   switch (currentScene) {
     case 1:
       drawScene1();
@@ -56,9 +73,27 @@ function draw() {
       drawScene15();
       break;
   }
+
+  // 4. Render "Press R to Restart" pulse effect on endings
+  if (currentScene >= 8) {
+    push();
+    fill(255, 255, 0, 150 + sin(frameCount * 0.1) * 100); // Pulsing yellow text
+    textAlign(CENTER);
+    textSize(20);
+    textStyle(BOLD);
+    text("Press 'R' to Try Again", width / 2, 560);
+    pop();
+  }
 }
 
 function mousePressed() {
+  // Safe audio start (required by Chrome)
+  userStartAudio();
+  if (bgMusic && bgMusic.isLoaded() && !bgMusic.isPlaying()) {
+    bgMusic.loop();
+  }
+
+  // Route clicks
   switch (currentScene) {
     case 1:
       clickScene1();
@@ -81,6 +116,13 @@ function mousePressed() {
     case 7:
       clickScene7();
       break;
-    // Endings 8-15 do not have clickable buttons, so they are not here
+  }
+}
+
+// 5. The Restart Mechanic
+function keyPressed() {
+  // If user presses 'R' AND they are on an ending screen (8-15)
+  if ((key === "r" || key === "R") && currentScene >= 8) {
+    currentScene = 1; // Send them back to the start!
   }
 }

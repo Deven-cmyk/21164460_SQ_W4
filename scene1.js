@@ -1,8 +1,5 @@
 function drawScene1() {
-  push();
-  fill(100, 110, 130);
-  triangle(100, 600, 700, 600, 400, 100);
-  pop();
+  drawMountain();
 
   drawDiogenes(400, 400, "none");
 
