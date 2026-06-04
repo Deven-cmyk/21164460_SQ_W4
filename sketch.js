@@ -1,147 +1,90 @@
-// ============================================================
-// Week 4 Example 1: Multi-File Structure + Rock Paper Scissors
-// ============================================================
-
-// ------------------------------------------------------------
-// ABOUT THIS FILE
-// This project is split across three JavaScript files:
-//
-//   sketch.js — p5.js entry point: setup(), draw(), mousePressed()
-//   game.js   — game logic: choices, results, state variables
-//   scenes.js — drawing helpers: blobs, buttons, result text
-//
-// All three files are loaded in index.html in that order.
-// Variables and functions defined in one file are available
-// in all others because they share the same global scope.
-// ------------------------------------------------------------
-
-// ------------------------------------------------------------
-// BLOB ANIMATION TIMERS
-// Stored here in sketch.js because they drive the visuals
-// but are not part of the game logic.
-// Each timer increases every frame to animate the wobble.
-// npcBlobT starts at 50 so the blobs wobble differently.
-// ------------------------------------------------------------
-let playerBlobT = 0;
-let npcBlobT = 50;
-
-// ------------------------------------------------------------
-// BUTTON LAYOUT
-// Shared constants for button position and size.
-// Defined once here so sketch.js and scenes.js stay in sync.
-// ------------------------------------------------------------
-const BTN_Y = 340;
-const BTN_W = 140;
-const BTN_H = 50;
-
-// ============================================================
-// setup()
-// Runs once at the very start of the sketch.
-// Sets up the canvas and font.
-// ============================================================
-function setup() {
-  createCanvas(800, 450);
-  textFont("monospace");
+function preload() {
+  soundFormats("mp3");
+  bgMusic = loadSound("assets/sounds/backgroundmusicforclass.mp3");
 }
 
-// ============================================================
-// draw()
-// Runs repeatedly in a loop after setup() finishes.
-// Calls drawing functions from scenes.js and reads game
-// state variables from game.js to decide what to show.
-// ============================================================
+function setup() {
+  createCanvas(800, 600);
+}
+
 function draw() {
-  // drawBackground() is defined in scenes.js
-  drawBackground();
+  background(40, 50, 60);
 
-  // --- Player blob (teal, left side) ---
-  // drawBlob() is defined in scenes.js
-  drawBlob(220, 180, 50, color(0, 200, 180), playerBlobT);
+  switch (currentScene) {
+    case 1:
+      drawScene1();
+      break;
+    case 2:
+      drawScene2();
+      break;
+    case 3:
+      drawScene3();
+      break;
+    case 4:
+      drawScene4();
+      break;
+    case 5:
+      drawScene5();
+      break;
+    case 6:
+      drawScene6();
+      break;
+    case 7:
+      drawScene7();
+      break;
+    case 8:
+      drawScene8();
+      break;
+    case 9:
+      drawScene9();
+      break;
+    case 10:
+      drawScene10();
+      break;
+    case 11:
+      drawScene11();
+      break;
+    case 12:
+      drawScene12();
+      break;
+    case 13:
+      drawScene13();
+      break;
+    case 14:
+      drawScene14();
+      break;
+    case 15:
+      drawScene15();
+      break;
+  }
+}
 
-  // --- NPC blob (orange, right side) ---
-  drawBlob(580, 180, 50, color(255, 150, 30), npcBlobT);
-
-  // --- Labels ---
-  fill(180);
-  noStroke();
-  textAlign(CENTER);
-  textSize(14);
-  text("You", 220, 260);
-  text("NPC", 580, 260);
-
-  // playerChoice is defined in game.js
-  // It is null before the player picks, and set to a choice after
-  if (playerChoice !== null) {
-    // Show what each side chose
-    fill(200);
-    textSize(18);
-    text(playerChoice.toUpperCase(), 220, 300);
-    text(npcChoice.toUpperCase(), 580, 300);
-
-    // drawResultText() and drawButton() are defined in scenes.js
-    drawResultText(roundResult);
-
-    drawButton(
-      width / 2,
-      380,
-      180,
-      50,
-      "Play Again",
-      isMouseOver(width / 2, 380, 180, 50),
-    );
-  } else {
-    // --- Choice buttons (only shown before player picks) ---
-    let positions = [220, 400, 580]; // x positions for the 3 buttons
-    let labels = ["ROCK", "PAPER", "SCISSORS"];
-
-    for (let i = 0; i < 3; i++) {
-      drawButton(
-        positions[i],
-        BTN_Y,
-        BTN_W,
-        BTN_H,
-        labels[i],
-        isMouseOver(positions[i], BTN_Y, BTN_W, BTN_H),
-      );
-    }
-
-    // Prompt
-    fill(160);
-    textSize(14);
-    textAlign(CENTER);
-    text("Make your choice", width / 2, 290);
+function mousePressed() {
+  if (bgMusic && !bgMusic.isPlaying()) {
+    bgMusic.loop();
   }
 
-  // Advance blob animations each frame
-  playerBlobT += 0.015;
-  npcBlobT += 0.015;
-}
-
-// ============================================================
-// mousePressed()
-// A built-in p5.js event function.
-// Automatically called once every time the mouse is clicked.
-// Checks which button was clicked and calls the appropriate
-// game logic function from game.js.
-// ============================================================
-function mousePressed() {
-  if (playerChoice === null) {
-    // Check each choice button
-    // ROCK, PAPER, SCISSORS constants are defined in game.js
-    let positions = [220, 400, 580];
-    let choices = [ROCK, PAPER, SCISSORS];
-
-    for (let i = 0; i < 3; i++) {
-      if (isMouseOver(positions[i], BTN_Y, BTN_W, BTN_H)) {
-        // playerChoose() is defined in game.js
-        // It sets playerChoice, npcChoice, and roundResult
-        playerChoose(choices[i]);
-      }
-    }
-  } else {
-    // Play Again button — resetRound() is defined in game.js
-    if (isMouseOver(width / 2, 380, 180, 50)) {
-      resetRound();
-    }
+  switch (currentScene) {
+    case 1:
+      clickScene1();
+      break;
+    case 2:
+      clickScene2();
+      break;
+    case 3:
+      clickScene3();
+      break;
+    case 4:
+      clickScene4();
+      break;
+    case 5:
+      clickScene5();
+      break;
+    case 6:
+      clickScene6();
+      break;
+    case 7:
+      clickScene7();
+      break;
   }
 }

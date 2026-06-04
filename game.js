@@ -1,83 +1,69 @@
-// ============================================================
-// game.js: Game Logic
-// ============================================================
-// This file contains all game logic for Rock Paper Scissors.
-// It does not draw anything — drawing is handled by scenes.js.
-// Variables defined here are available in sketch.js and scenes.js
-// because all files share the same global scope.
-// ============================================================
+// Global State Variables
+let currentScene = 1;
+let bgMusic;
 
-// ------------------------------------------------------------
-// CHOICES
-// We define the three choices as constants so we never have
-// to type the strings "rock", "paper", "scissors" manually
-// and risk a typo causing a bug.
-// CHOICES is an array used to pick a random NPC move.
-// ------------------------------------------------------------
-const ROCK     = "rock";
-const PAPER    = "paper";
-const SCISSORS = "scissors";
+// Shared Button Dimensions
+const BTN_W = 240;
+const BTN_H = 60;
+const BTN_Y = 500;
 
-const CHOICES = [ROCK, PAPER, SCISSORS];
-
-// ------------------------------------------------------------
-// GAME STATE
-// These variables track the current choices and result.
-// They start as null so sketch.js knows no round is in progress.
-// ------------------------------------------------------------
-let playerChoice = null; // set when player clicks a button
-let npcChoice    = null; // set randomly when player chooses
-let roundResult  = null; // "win", "lose", or "draw"
-
-// ------------------------------------------------------------
-// getNPCChoice()
-// Picks a random choice for the NPC each round.
-// random(array) returns a random element from the array.
-// ------------------------------------------------------------
-function getNPCChoice() {
-  return random(CHOICES);
+// Helper: Check if mouse is over a button using CENTER coordinates
+function isMouseOver(x, y, w, h) {
+  return (
+    mouseX > x - w / 2 &&
+    mouseX < x + w / 2 &&
+    mouseY > y - h / 2 &&
+    mouseY < y + h / 2
+  );
 }
 
-// ------------------------------------------------------------
-// getResult(player, npc)
-// Works out who wins given the two choices.
-// Returns "win", "lose", or "draw".
-//
-// Win conditions are written out explicitly — no clever maths,
-// just clear readable comparisons that are easy to follow.
-// ------------------------------------------------------------
-function getResult(player, npc) {
-  if (player === npc) return "draw";
+// Helper: Draw buttons using push() and pop() to isolate styles
+function drawChoiceButton(x, y, w, h, label) {
+  push();
+  rectMode(CENTER);
 
-  if (
-    (player === ROCK     && npc === SCISSORS) ||
-    (player === PAPER    && npc === ROCK)     ||
-    (player === SCISSORS && npc === PAPER)
-  ) {
-    return "win";
+  let hovered = isMouseOver(x, y, w, h);
+  fill(hovered ? color(200) : color(255));
+  stroke(0);
+  strokeWeight(3);
+  rect(x, y, w, h, 10);
+
+  fill(0);
+  noStroke();
+  textAlign(CENTER, CENTER);
+  textSize(16);
+  text(label, x, y);
+  pop();
+}
+
+// Helper: Draw Diogenes procedurally
+function drawDiogenes(x, y, vesselType) {
+  push();
+  rectMode(CENTER);
+
+  // Body
+  fill(220, 180, 140);
+  ellipse(x, y - 40, 40, 40); // Head
+  fill(50);
+  rect(x, y - 10, 30, 40, 5); // Torso
+
+  // Vessel Logic
+  if (vesselType === "cauldron") {
+    fill(40);
+    arc(x, y + 20, 80, 80, 0, PI, CHORD);
+  } else if (vesselType === "metalBarrel") {
+    fill(100, 110, 120);
+    rect(x, y + 20, 60, 70, 5);
+  } else if (vesselType === "woodBarrel") {
+    fill(139, 69, 19);
+    rect(x, y + 20, 70, 60, 10);
+  } else if (vesselType === "bowl") {
+    fill(240, 240, 230);
+    arc(x, y + 20, 90, 60, 0, PI, CHORD);
+  } else {
+    fill(20, 20, 80); // Default legs
+    rect(x - 10, y + 20, 12, 40);
+    rect(x + 10, y + 20, 12, 40);
   }
-
-  return "lose";
-}
-
-// ------------------------------------------------------------
-// playerChoose(choice)
-// Called from sketch.js when the player clicks a button.
-// Sets the player and NPC choices, then works out the result.
-// ------------------------------------------------------------
-function playerChoose(choice) {
-  playerChoice = choice;
-  npcChoice    = getNPCChoice();
-  roundResult  = getResult(playerChoice, npcChoice);
-}
-
-// ------------------------------------------------------------
-// resetRound()
-// Called from sketch.js when the Play Again button is clicked.
-// Clears all choices so a new round can begin.
-// ------------------------------------------------------------
-function resetRound() {
-  playerChoice = null;
-  npcChoice    = null;
-  roundResult  = null;
+  pop();
 }
