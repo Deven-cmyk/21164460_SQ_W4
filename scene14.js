@@ -1,9 +1,7 @@
 function drawScene14() {
   drawMountain();
+  drawDiogenes(400, 500, "none", "sledgehammer");
 
-  drawDiogenes(400, 500, "none"); // Legs are free
-
-  // Draw broken bowl pieces
   push();
   fill(240, 240, 230);
   arc(380, 550, 40, 30, PI, TWO_PI);
@@ -13,10 +11,12 @@ function drawScene14() {
   push();
   textAlign(CENTER);
   textSize(28);
+  textStyle(BOLD);
   fill(255, 100, 100);
   text("GAME OVER: The Shattered Hope", width / 2, 80);
   fill(255);
   textSize(16);
+  textStyle(NORMAL);
   text(
     "He hooks the ledge! But as he swings upward, the hammer drops back.",
     width / 2,

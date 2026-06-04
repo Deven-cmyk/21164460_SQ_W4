@@ -26,6 +26,7 @@ function drawScene7() {
   drawChoiceButton(240, BTN_Y, BTN_W, BTN_H, "Heavy Sledgehammer");
   drawChoiceButton(560, BTN_Y, BTN_W, BTN_H, "Wooden Walking Stick");
 }
+
 function clickScene7() {
   if (isMouseOver(240, BTN_Y, BTN_W, BTN_H)) {
     currentScene = 14;

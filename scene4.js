@@ -22,6 +22,7 @@ function drawScene4() {
   drawChoiceButton(240, BTN_Y, BTN_W, BTN_H, "Yosemite Sledgehammer");
   drawChoiceButton(560, BTN_Y, BTN_W, BTN_H, "Smooth Steel Pipe");
 }
+
 function clickScene4() {
   if (isMouseOver(240, BTN_Y, BTN_W, BTN_H)) {
     currentScene = 8;

@@ -26,6 +26,7 @@ function drawScene5() {
   drawChoiceButton(240, BTN_Y, BTN_W, BTN_H, "Thick Tree Branch");
   drawChoiceButton(560, BTN_Y, BTN_W, BTN_H, "Heavy Sledgehammer");
 }
+
 function clickScene5() {
   if (isMouseOver(240, BTN_Y, BTN_W, BTN_H)) {
     currentScene = 10;

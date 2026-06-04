@@ -26,6 +26,7 @@ function drawScene6() {
   drawChoiceButton(240, BTN_Y, BTN_W, BTN_H, "Wooden Broom");
   drawChoiceButton(560, BTN_Y, BTN_W, BTN_H, "Steel Pickaxe");
 }
+
 function clickScene6() {
   if (isMouseOver(240, BTN_Y, BTN_W, BTN_H)) {
     currentScene = 12;

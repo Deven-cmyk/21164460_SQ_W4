@@ -1,15 +1,16 @@
 function drawScene9() {
   drawMountain();
-
-  drawDiogenes(500, 450, "cauldron");
+  drawDiogenes(500, 450, "cauldron", "pipe");
 
   push();
   textAlign(CENTER);
   textSize(28);
+  textStyle(BOLD);
   fill(255, 100, 100);
   text("GAME OVER: The Slippery Slope", width / 2, 80);
   fill(255);
   textSize(16);
+  textStyle(NORMAL);
   text(
     "The heavy iron cauldron weighs him down, and the smooth pipe offers zero grip.",
     width / 2,
