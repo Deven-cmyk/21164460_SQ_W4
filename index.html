@@ -3,16 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Week 4 Example 1 — Rock Paper Scissors</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+    <title>Getting Over It: The Vessel Choice</title>
 
-    <!-- Load game files in order — game logic first, then drawing, then main -->
-    <!-- The order matters: sketch.js uses functions from game.js and scenes.js -->
-    <!-- so those must be loaded before sketch.js -->
-    <script src="game.js"></script>
-    <script src="scenes.js"></script>
-    <script src="sketch.js"></script>
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- 1. Libraries Load First -->
+    <script src="libraries/p5.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
   </head>
-  <body></body>
+  <body>
+    <!-- 2. Global Game Logic -->
+    <script src="game.js"></script>
+
+    <!-- 3. All 15 Scenes -->
+    <script src="scene1.js"></script>
+    <script src="scene2.js"></script>
+    <script src="scene3.js"></script>
+    <script src="scene4.js"></script>
+    <script src="scene5.js"></script>
+    <script src="scene6.js"></script>
+    <script src="scene7.js"></script>
+    <script src="scene8.js"></script>
+    <script src="scene9.js"></script>
+    <script src="scene10.js"></script>
+    <script src="scene11.js"></script>
+    <script src="scene12.js"></script>
+    <script src="scene13.js"></script>
+    <script src="scene14.js"></script>
+    <script src="scene15.js"></script>
+
+    <!-- 4. Main Engine / Sketch Loads Last -->
+    <script src="sketch.js"></script>
+  </body>
 </html>
