@@ -1,16 +1,26 @@
 function drawScene2() {
-  drawMountain();
+  push();
+  fill(80, 50, 40);
+  rect(0, 400, 800, 200);
+  fill(120, 120, 120);
+  rect(200, 350, 100, 100);
+  rect(500, 380, 150, 70);
+  pop();
+
+  drawDiogenes(400, 320, "none");
 
   push();
   fill(255);
   textAlign(CENTER);
   textSize(24);
-  text("The Scrapyard", width / 2, 80);
+  textStyle(BOLD);
+  text("The Scrapyard", width / 2, 70);
   textSize(16);
+  textStyle(NORMAL);
   text(
     "He wades through rusted metal. He spots two heavy-duty options.",
     width / 2,
-    120,
+    110,
   );
   pop();
 
