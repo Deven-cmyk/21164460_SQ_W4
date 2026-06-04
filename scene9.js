@@ -1,9 +1,5 @@
 function drawScene9() {
-  push();
-  background(30, 20, 20);
-  fill(80, 90, 100);
-  triangle(0, 600, 800, 200, 800, 600); // Steep slope
-  pop();
+  drawMountain();
 
   drawDiogenes(500, 450, "cauldron");
 

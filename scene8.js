@@ -1,11 +1,5 @@
 function drawScene8() {
-  push();
-  background(10, 20, 40);
-  fill(255, 255, 200);
-  ellipse(700, 100, 80, 80);
-  fill(80, 90, 100);
-  triangle(200, 600, 800, 600, 500, 200);
-  pop();
+  drawMountain();
 
   drawDiogenes(500, 180, "cauldron");
 
