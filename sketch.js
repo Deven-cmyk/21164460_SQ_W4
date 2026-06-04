@@ -1,6 +1,6 @@
 function preload() {
-  soundFormats("mp3");
-  bgMusic = loadSound("assets/sounds/backgroundmusicforclass.mp3");
+  // soundFormats('mp3');
+  // bgMusic = loadSound('assets/sounds/backgroundmusicforclass.mp3');
 }
 
 function setup() {
@@ -60,9 +60,16 @@ function draw() {
 }
 
 function mousePressed() {
-  if (bgMusic && !bgMusic.isPlaying()) {
-    bgMusic.loop();
+  // if (bgMusic && !bgMusic.isPlaying()) {
+  //  bgMusic.loop();
+  // }
+
+  switch(currentScene) {
+    case 1: clickScene1(); break;
+    case 2: clickScene2(); break;
+    // ... rest of your switch statement
   }
+}
 
   switch (currentScene) {
     case 1:
